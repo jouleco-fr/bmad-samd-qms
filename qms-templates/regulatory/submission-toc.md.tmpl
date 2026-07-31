@@ -1,0 +1,35 @@
+# Submission Table of Contents — {{device_name}}
+
+Map from submission section to QMS artifact. Covers both **510(k) / eSTAR** (US) and
+**EU MDR Technical Documentation** (EU), depending on target jurisdictions: **{{jurisdiction}}**.
+
+## US 510(k) / eSTAR sections (if applicable)
+
+| Section | Content | QMS artifact | Status |
+|---|---|---|---|
+| 1. Device description | Device description, pictures, labeling | `regulatory/device-description.md` | Draft |
+| 2. Substantial equivalence | Intended use comparison, technological characteristics | `regulatory/predicate-analysis.md` | Draft |
+| 3. Proposed labeling | IFU, label | `regulatory/labeling-ifu.md` | Draft |
+| 4. Biocompatibility | N/A for software | N/A | — |
+| 5. Software | IEC 62304 documentation | `regulatory/iec-62304-software-file.md` | Draft |
+| 6. Electromagnetic compatibility | N/A for software | N/A | — |
+| 7. Performance testing / summary | V&V summary, test data | `requirements/traceability.md` + test reports | Draft |
+| 8. Cybersecurity | Cybersecurity documentation | `regulatory/cybersecurity-file.md` | Draft |
+
+## EU MDR Technical Documentation (if applicable)
+
+| Annex | Content | QMS artifact | Status |
+|---|---|---|---|
+| Annex I — GSPR | GSPR checklist | `regulatory/gspr-checklist.md` | Draft |
+| Annex II §1 — Device description | Intended use, variants, accessories | `regulatory/intended-use.md` | Draft |
+| Annex II §3 — Design & manufacturing | IEC 62304 documentation | `regulatory/iec-62304-software-file.md` | Draft |
+| Annex II §4 — GSPR compliance | Evidence for each GSPR | `regulatory/gspr-checklist.md` | Draft |
+| Annex II §6 — Benefit-risk & risk management | ISO 14971 file | `risk/risk-management-file.md` | Draft |
+| Annex II §7 — PMS | PMS plan | `regulatory/pms-plan.md` | Draft |
+| Annex XIV — Clinical evaluation | CEP + CER | `regulatory/clinical-evaluation-plan.md` | Draft |
+| Annex XV — Clinical investigations (if needed) | Clinical study protocol | [PLANNED] | Not started |
+
+## Overall submission readiness
+
+[FILL IN: Summary of what is complete, partial, or missing. Run `/qms-init validate` to generate
+the current completeness status.]

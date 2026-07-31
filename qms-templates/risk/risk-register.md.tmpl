@@ -1,0 +1,33 @@
+# Risk Register — {{device_name}} (ISO 14971)
+
+Hazard index feeding the `risk-management-file.md`. Add a row per identified hazard.
+Detail (S/P estimation, controls, residual) lives in the risk management file.
+
+| ID | Hazard | Hazardous situation | Harm | Category |
+|---|---|---|---|---|
+| RISK-01 | [FILL IN: e.g. Software error] | [e.g. Wrong value extracted from document] | [e.g. Clinician acts on wrong data → wrong treatment] | Data integrity |
+| RISK-02 | [FILL IN] | | | |
+| RISK-03 | [FILL IN] | | | |
+
+## Hazard categories to consider
+
+Use these as a checklist when brainstorming hazards:
+
+| Category | Examples |
+|---|---|
+| Data integrity | Wrong value, missing value, duplicated value, value on wrong patient |
+| Patient identification | Wrong patient matched, patient mis-identified |
+| Data availability | Record unavailable when needed, data loss |
+| Display correctness | Value displayed incorrectly, unit wrong, context missing |
+| Configuration | Wrong config applied, config tampered, missing required config item |
+| Cybersecurity | PHI breach, data tampered by attacker, system unavailable |
+| Usability | Automation bias, misleading UI, error not noticed |
+| Supply chain | SOUP vulnerability, compromised dependency |
+| Infrastructure | DB failure, network outage, backup failure |
+| Lifecycle | Stale/superseded data shown, version mismatch |
+
+## Probability calibration note
+
+Initial probability estimates are engineering judgements.
+They must be updated with real-world field data from PMS (see `../regulatory/pms-plan.md`).
+Until then, mark probability estimates as provisional.

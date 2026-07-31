@@ -1,0 +1,54 @@
+# Quality Management System (QMS) — {{device_name}}
+
+Version-controlled QMS for **{{project_name}}** — a {{clinical_domain}} clinical software application
+intended to be regulated as **FDA {{fda_class_label}}** and/or **EU MDR {{eu_mdr_class_label}}**.
+
+This QMS is authored as plain Markdown so every design input, decision, requirement, and risk
+is diffable, reviewable, and traceable alongside the source code.
+
+## Layout
+
+| Path | Purpose |
+|---|---|
+| `constraints-register.md` | Hard design-input constraints (`CON-*`) |
+| `definition-of-done.md` | Universal completion bar every story must clear (DoD) |
+| `soup-register.md` | SOUP / third-party dependency register (IEC 62304) |
+| `open-items.md` | Open items, stubs, and deferred decisions (`OPEN-*`) |
+| `decisions/` | Architecture Decision Records (`ADR-*`) |
+| `architecture/` | Component map, SDD, UML diagrams |
+| `requirements/` | Requirement sets: traceability (`REQ-TRACE-*`), configuration (`REQ-CFG-*`) |
+| `risk/risk-management-file.md` | **Governing ISO 14971 file** — plan, hazard analysis, residual risk |
+| `risk/risk-register.md` | ISO 14971 hazard index (`RISK-*`) |
+| `regulatory/intended-use.md` | Regulatory-grade intended use statement |
+| `regulatory/iec-62304-software-file.md` | IEC 62304 software lifecycle documentation |
+| `regulatory/fda-classification-rationale.md` | FDA classification and pathway analysis |
+| `regulatory/gspr-checklist.md` | EU MDR Annex I General Safety and Performance Requirements |
+| `regulatory/cybersecurity-file.md` | FDA §524B / IEC 81001-5-1 cybersecurity file |
+| `regulatory/clinical-evaluation-plan.md` | EU MDR clinical evaluation plan |
+| `regulatory/pms-plan.md` | Post-Market Surveillance plan |
+| `regulatory/submission-toc.md` | Submission table of contents |
+
+## ID conventions
+
+- `CON-<AREA>-NN` — a constraint / design input
+- `ADR-NNNN` — an architecture decision record
+- `REQ-<AREA>-NN` — a derived requirement
+- `RISK-NN` — a risk-register item (ISO 14971)
+- `OPEN-NN` — an open item (stub, deferred decision, not-yet-started area)
+
+## Traceability rule
+
+Every `CON-*` must be referenced by at least one `ADR-*`, component tag, or `REQ-*`.
+Every `REQ-*` must trace to verifying tests. No dangling IDs.
+Anything marked *stub / TBD / Draft* must have a matching `OPEN-*` entry.
+
+## Regulatory framing
+
+- **FDA**: {{fda_class_label}} — see `regulatory/fda-classification-rationale.md`
+- **EU MDR**: {{eu_mdr_class_label}} — see `regulatory/gspr-checklist.md`
+- **IEC 62304 software safety class**: {{iec62304_class_label}}
+- **PHI / personal data handled**: {{phi_handling}}
+- **Clinician-confirmed output**: {{clinician_confirmed}}
+
+Standards in scope: ISO 13485 (QMS), IEC 62304 (software lifecycle), ISO 14971 (risk management),
+IEC 62366-1 (usability engineering), IEC 81001-5-1 (cybersecurity).

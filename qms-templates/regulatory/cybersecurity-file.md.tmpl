@@ -1,0 +1,94 @@
+# Cybersecurity File — {{device_name}}
+
+Premarket cybersecurity documentation per **FD&C Act §524B** and FDA's
+*Cybersecurity in Medical Devices: Quality System Considerations and Content of Premarket Submissions*
+(final, 2025); references IEC 81001-5-1 / AAMI TIR57.
+⚠️ Draft for RA/security review; not regulatory advice.
+
+**§524B applicability:** [FILL IN: Is this a "cyber device"? Software that contains software, is
+intended to connect to the internet, and meets other criteria triggers §524B.
+State the applicability determination here.]
+
+## 1. Security risk management & threat model
+
+- **Assets:** [FILL IN: PHI, clinical data integrity, system availability, audit trail, credentials, config]
+- **Trust boundaries / interfaces:** [FILL IN: list all external interfaces — data sources, identity provider,
+  secrets manager, downstream consumers, user-facing UI]
+- **Threats (STRIDE):** [FILL IN: map STRIDE categories to your specific attack surface]
+  - Spoofing →
+  - Tampering →
+  - Repudiation →
+  - Information disclosure →
+  - Denial of service →
+  - Elevation of privilege →
+- **Highest-priority attack surface:** [FILL IN: e.g. untrusted file ingestion, external API, user input]
+
+## 2. Security architecture
+
+- **Global system view:** [FILL IN: describe modular components, trust boundaries, encryption posture]
+- **Multi-patient harm view:** [FILL IN: shared assets that could affect many patients — controls]
+- **Updateability / patchability:** [FILL IN: SBOM, dependency governance, patch path]
+- **Data-flow / interface view:** [FILL IN: authentication per interface, data handling]
+
+## 3. Secure Product Development Framework (SPDF)
+
+- No SOUP without authorization (CON-SUP-01); single curated dependency repo ({{artifact_repo}})
+- CycloneDX SBOM per build
+- Secure coding: no PHI in logs, structured logging, secrets via secrets port, no secrets in code
+- Code review + automated tests + traceability annotation
+- Threat modeling maintained across the lifecycle
+- Formal SPDF SOP [QMS — OPEN-04]
+
+## 4. Security requirements / controls
+
+| ID | Control | Implementation |
+|---|---|---|
+| SEC-1 | **Authentication** | [FILL IN: OAuth/OIDC, SAML, local — describe implementation] |
+| SEC-2 | **Authorization (least privilege)** | [FILL IN: RBAC, ABAC — describe roles and permission model] |
+| SEC-3 | **Encryption in transit** | TLS on all interfaces |
+| SEC-4 | **Encryption at rest** | [FILL IN: database encryption, file encryption] |
+| SEC-5 | **Secrets/key management** | [FILL IN: secrets manager / vault — describe approach] |
+| SEC-6 | **Integrity** | [FILL IN: hashing, signing, append-only audit trail] |
+| SEC-7 | **Audit & attribution** | [FILL IN: per-user attribution, no PHI in logs] |
+| SEC-8 | **Availability / resilience** | [FILL IN: backup, DR, at-least-once delivery] |
+| SEC-9 | **Untrusted-input handling** | [FILL IN: input validation, resource limits, sandboxing] |
+| SEC-10 | **Config integrity** | [FILL IN: validation before promotion, no production-side config] |
+
+## 5. SBOM & SOUP vulnerability management
+
+- CycloneDX SBOM emitted per build (machine-readable, NTIA-aligned)
+- SOUP register: `../soup-register.md`
+- Vulnerability monitoring: [FILL IN: CVE feed, advisory monitoring process]
+- Triage → patch via {{artifact_repo}}; SBOM updated each release
+- Vulnerability management SOP [QMS — OPEN-04]
+
+## 6. Security testing
+
+- SAST / dependency scanning: [FILL IN: tool, frequency]
+- DAST: [FILL IN: tool, scope — PLANNED]
+- Fuzzing of untrusted-input parsers: [PLANNED]
+- Penetration test before submission: [PLANNED]
+
+## 7. Postmarket cybersecurity management
+
+- Vulnerability monitoring + SBOM maintenance
+- Coordinated Vulnerability Disclosure (CVD) policy [QMS — OPEN-04]
+- Patch/update deployment path
+- Incident response SOP [QMS — OPEN-04]
+- Security-event trending → feeds ISO 14971 §8 loop and PMS plan
+
+## 8. Cybersecurity labeling
+
+[FILL IN: information for operators — supported deployment configurations, authentication setup,
+patch expectations, SBOM availability, backup guidance, incident-reporting contact]
+
+## 9. Status & gaps
+
+**Have:** [FILL IN]
+**To implement:** [FILL IN]
+**[PLANNED] tests:** fuzzing, DAST, pen test
+**[QMS]:** SPDF / vuln-mgmt / CVD / incident-response SOPs (OPEN-04)
+
+## Cross-refs
+
+`../soup-register.md`, `../risk/risk-management-file.md`, `../constraints-register.md`

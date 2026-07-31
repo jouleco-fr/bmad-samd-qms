@@ -1,0 +1,28 @@
+# Component Map — {{device_name}}
+
+Decomposition of the device into independent software components (IEC 62304 §5.3).
+Each component is an independent, loosely-coupled unit integrated via versioned contracts (CON-ARCH-01).
+
+## Components
+
+| Component | Purpose | Device/Non-device | IEC 62304 Class | Status |
+|---|---|---|---|---|
+| [FILL IN: component name] | [FILL IN: purpose] | Device | {{iec62304_class}} | [PLANNED/In-dev/Released] |
+
+## Conventions
+
+- **Device component:** software that is part of the medical device and subject to IEC 62304.
+- **Non-device component:** supporting tooling (config authoring app, monitoring, CI scripts) — not regulated as device software but must not compromise device safety.
+- **Integration contracts:** each inter-component interface is defined as a versioned contract (OpenAPI / FHIR profile / JSON Schema / Protobuf). No informal coupling.
+
+## Architecture diagram
+
+[FILL IN: Add a PlantUML or Mermaid diagram of the component topology here, or reference a .puml file]
+
+## Traceability
+
+| Constraint / ADR | Component(s) that implement it |
+|---|---|
+| CON-ARCH-01 (loose coupling) | All |
+| CON-SUP-01 (SOUP governance) | All |
+| [FILL IN: other constraints] | [FILL IN] |

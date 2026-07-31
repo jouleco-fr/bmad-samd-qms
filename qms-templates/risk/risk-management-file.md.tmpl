@@ -1,0 +1,93 @@
+# Risk Management File — {{device_name}} (ISO 14971:2019)
+
+The ISO 14971 risk management file for **{{device_name}}**.
+⚠️ Draft for RA/clinical review; not regulatory advice.
+Items needing the ISO 13485 QMS are flagged **[QMS]** (OPEN-04);
+data-dependent items **[data-gated]**; not-yet-designed components **[PLANNED]**.
+
+## 1. Risk management plan
+
+- **Scope:** [FILL IN: list the device components/functions covered by this analysis]
+- **Process/roles [QMS]:** risk activities, reviewers, and sign-off authority to be formalized
+  as an SOP (OPEN-04).
+- **Risk acceptability — severity (S):**
+  - S1 Negligible
+  - S2 Minor (temporary/reversible)
+  - S3 Serious (medical intervention required, reversible)
+  - S4 Critical (permanent impairment)
+  - S5 Catastrophic (death)
+- **Probability (P):** P1 Improbable · P2 Remote · P3 Occasional · P4 Probable · P5 Frequent
+- **Acceptability matrix (5×5):**
+  - Low (S×P ≤ [FILL IN]): broadly acceptable
+  - ALARP (mid band): reduce as far as reasonably practicable + document benefit-risk
+  - Unacceptable (S×P ≥ [FILL IN]): must reduce or redesign
+  - ⚠️ Provisional thresholds — management ratification [QMS] required (OPEN-02)
+
+## 2. Risk analysis — inputs
+
+- **Intended use / purpose:** {{intended_use_summary}} — see `../regulatory/intended-use.md`
+- **Reasonably foreseeable misuse:** [FILL IN: list ways the device could be misused,
+  e.g. use outside intended clinical setting, user ignores warnings, over-reliance on output]
+- **Safety characteristics:** [FILL IN: what physical/functional properties are safety-relevant,
+  e.g. data integrity, availability, correctness of displayed values]
+- **Key risk control:** [FILL IN: what is the master safety control? e.g. clinician confirmation gate,
+  independent verification, output accuracy threshold]
+
+## 3. Risk estimation & evaluation
+
+Hazard detail in `risk-register.md`. Controls reference FRs/ADRs/requirements.
+
+| ID | Hazardous situation → harm | S | P | Key controls | S′ | P′ | Residual |
+|---|---|---|---|---|---|---|---|
+| RISK-01 | [FILL IN: Situation → harm, e.g. wrong value displayed → wrong clinical decision] | [1-5] | [1-5] | [FILL IN: controls] | [1-5] | [1-5] | [Acceptable/ALARP/Unacceptable] |
+| RISK-02 | [FILL IN] | | | | | | |
+
+_Add all hazards identified during design and clinical evaluation. Minimum: consider data integrity,
+availability, patient identification, display correctness, configuration errors, cybersecurity, and
+the risks introduced by the risk controls themselves (e.g. automation bias from clinician confirmation)._
+
+## 4. Risk control — master controls & options analysis
+
+Per ISO 14971 priority (inherent-safe-design → protective measures → information-for-safety):
+
+- **Inherent design:** [FILL IN: design features that eliminate or reduce risk at source]
+- **Protective measures:** [FILL IN: guards, alarms, interlocks, confirmation gates]
+- **Information for safety:** [FILL IN: IFU warnings, on-screen warnings, training requirements]
+- **New risks introduced by controls:** [FILL IN: automation bias, workarounds, etc. — must be
+  included in the hazard analysis]
+
+## 5. Verification of risk controls
+
+Each control is verified by a traced test (CON-TEST-01).
+[FILL IN: describe how each major control is verified — e.g. negative test for confirmation gate,
+accuracy test for confidence scorer, contract test for data integrity at seams]
+
+## 6. Overall residual risk & benefit-risk
+
+- **Overall residual risk:** [FILL IN: Acceptable / ALARP / Unacceptable — PROVISIONAL]
+  Provisional pending: [FILL IN: what data-gated or [PLANNED] items must be resolved]
+- **Benefit-risk:** [FILL IN: describe the clinical benefit in measurable terms and confirm
+  it outweighs the residual risks]
+
+## 7. Software safety classification — confirmation
+
+The analysis **supports IEC 62304 Class {{iec62304_class}}** (see `../regulatory/iec-62304-software-file.md`).
+[FILL IN: explain why the analysis supports this class — what controls prevent a software failure
+from causing serious injury, or why serious injury is plausible (Class C)]
+
+## 8. Production & post-production (link to PMS)
+
+Post-market signals to feed back into this file [QMS/PLANNED]:
+[FILL IN: list KPIs to monitor, e.g. error/failure rates, complaint rates, correction rates]
+Trending thresholds: see `../regulatory/pms-plan.md`.
+
+## 9. Gaps
+
+**[QMS]:** risk SOP + acceptability-threshold ratification + roles (OPEN-02/04)
+**[data-gated]:** [FILL IN: items needing real-world data to close]
+**[PLANNED]:** [FILL IN: controls that land with future components]
+
+## Cross-refs
+
+`risk-register.md`, `../regulatory/iec-62304-software-file.md`,
+`../regulatory/intended-use.md`, `../regulatory/pms-plan.md`

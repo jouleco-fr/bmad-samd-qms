@@ -1,0 +1,54 @@
+# FDA Classification & Pathway Rationale — {{device_name}}
+
+Analysis to settle device definition and classification for a US submission.
+⚠️ Engineering analysis, not regulatory advice — confirm via predicate search and FDA Pre-Submission (Q-Sub).
+
+## Device definition
+
+{{intended_use_summary}}
+
+See `intended-use.md` for the full intended use statement.
+
+## Classification analysis
+
+**Target classification: {{fda_class_label}}**
+
+[FILL IN: Walk through the classification logic for your device. Key questions to address:
+1. Is it a device under 21 CFR? (SaMD that processes/displays medical data typically is.)
+2. Does it qualify as MDDS (Medical Device Data System, 21 CFR 880.6310, Class I exempt)?
+   — Only if it only transfers/stores/displays data without any transformation or interpretation.
+3. Which product code and 21 CFR section applies? (e.g. NFJ for ophthalmic image management,
+   QMF for general clinical decision support, etc.)
+4. What is the predicate device / 510(k) number (if 510(k) pathway)?
+5. If no predicate exists, is De Novo the route?]
+
+## Predicate analysis (if 510(k))
+
+| Field | Value |
+|---|---|
+| Predicate device | [FILL IN: name + 510(k) number] |
+| Intended use — same? | [FILL IN: yes / substantially equivalent + explanation] |
+| Technological characteristics — same? | [FILL IN: yes / different but not raising new safety questions + explanation] |
+| SE gap / performance data needed | [FILL IN: what additional data FDA may require] |
+
+_See `predicate-analysis.md` for full predicate comparison._
+
+## Special considerations
+
+**21st Century Cures Act CDS exemption:** [FILL IN: does it apply? The exemption does NOT apply if the
+software processes medical images/signals, or if it acquires data from a medical device.]
+
+**Cybersecurity (§524B):** [FILL IN: is this a "cyber device"? A cyber device is software that
+"contains software" and "is intended to connect to the internet." §524B requirements apply
+if yes — see `cybersecurity-file.md`.]
+
+## Recommended next steps
+
+1. Conduct a formal predicate search on the FDA 510(k) database.
+2. Request an FDA **Pre-Submission (Q-Sub)** to confirm: (a) device vs. non-device, (b) classification,
+   (c) predicate acceptability, (d) performance data expected.
+3. Complete `predicate-analysis.md` with the predicate device comparison.
+
+## Sources
+
+[FILL IN: cite the 510(k) decisions, FDA guidance documents, and CFR sections you referenced]

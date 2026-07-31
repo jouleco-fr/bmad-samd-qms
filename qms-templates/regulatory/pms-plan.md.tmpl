@@ -1,0 +1,66 @@
+# Post-Market Surveillance (PMS) Plan — {{device_name}}
+
+Per **EU MDR 2017/745, Article 83 and Annex III** (EU) and
+**21 CFR Part 822 / FDA guidance on MDR and PMS** (US).
+⚠️ Draft for RA review; not regulatory advice.
+
+## 1. Purpose
+
+Define the systematic PMS process for **{{device_name}}** to proactively collect and review
+real-world data throughout the device lifecycle, feeding back into the ISO 14971 risk loop.
+
+## 2. PMS data sources
+
+| Source | Data collected | Frequency |
+|---|---|---|
+| Customer complaints / support tickets | Adverse events, near-misses, usability issues | Continuous |
+| Field performance metrics | [FILL IN: e.g. extraction accuracy, error rates] | [FILL IN] |
+| Literature surveillance | Published evidence on equivalent devices | Quarterly |
+| Vigilance reports from other manufacturers | Known issues with similar devices | As published |
+| Clinical audit / registry (if applicable) | Clinical outcome data | [FILL IN] |
+| PMCF study (EU MDR, if applicable) | Active clinical follow-up data | [FILL IN] |
+
+## 3. Trending and thresholds
+
+[FILL IN: Define the signal thresholds that trigger escalation.
+Example: extraction failure rate > X%, complaint rate > Y events/month,
+new serious adverse event, critical CVE in a shipped SOUP item.]
+
+Threshold breach → triggers:
+- ISO 14971 risk file review
+- CAPA (ISO 13485 QMS process — OPEN-04)
+- Regulatory reporting (MDR / MAUDE as applicable)
+- Potential Field Safety Corrective Action (FSCA / Field Action)
+
+## 4. Regulatory reporting obligations
+
+**US (FDA):** Report under 21 CFR Part 803 (MDRs):
+- Death or serious injury attributable to the device → 30-day MDR
+- Malfunction that could cause death/serious injury → 30-day MDR
+
+**EU (MDR):** Report under Article 87:
+- Serious incidents → 15-day or 2-day (immediate) report to Competent Authority / Notified Body
+- Field safety corrective actions → FSCA notification
+
+## 5. PMS report (EU MDR)
+
+For IIa / IIb / III devices: periodic **PSUR** (Periodic Safety Update Report) required.
+- Frequency: [FILL IN — annually for IIa/IIb, every 2 years for III per MDR Art. 86]
+- Content: summary of PMS data, signal assessment, benefit-risk update, PMCF conclusions
+
+## 6. Roles and responsibilities [QMS]
+
+[FILL IN: Who is responsible for PMS data collection, trending, escalation, and reporting?
+This requires the ISO 13485 QMS (OPEN-04).]
+
+## 7. Links to other processes
+
+- ISO 14971 §10 loop: PMS signals trigger hazard re-evaluation in `risk/risk-management-file.md`
+- CAPA: handled under ISO 13485 QMS (OPEN-04)
+- Cybersecurity: vulnerability monitoring feeds both PMS and `regulatory/cybersecurity-file.md`
+- Clinical evaluation update: PMCF data feeds the CER update cycle
+
+## Cross-refs
+
+`risk/risk-management-file.md` §8, `regulatory/clinical-evaluation-plan.md`,
+`regulatory/cybersecurity-file.md`, `open-items.md`

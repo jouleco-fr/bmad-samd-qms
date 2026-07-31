@@ -1,0 +1,25 @@
+# Open Items — {{device_name}}
+
+Log of stubs, deferred decisions, and not-yet-started areas. Every item marked *stub / TBD / Draft*
+in any QMS document must have a corresponding entry here.
+
+| ID | Description | Priority | Status |
+|---|---|---|---|
+| OPEN-01 | **Intended use confirmation** — have RA review and sign off `regulatory/intended-use.md`. | 🔴 | Open |
+| OPEN-02 | **ISO 14971 risk file** — grow hazard analysis; add project-specific hazards; ratify acceptability thresholds with management. | 🔴 | Open |
+| OPEN-03 | **FDA Pre-Submission (Q-Sub)** — confirm device classification, predicate acceptability, and cybersecurity documentation expectations with FDA before full dossier investment. | 🔴 | Open |
+| OPEN-04 | **ISO 13485 QMS processes** — CAPA, change control, complaint handling, and problem-resolution SOPs are not yet established. Required for submission. | 🔴 | Open |
+| OPEN-05 | **SOUP risk analysis** — complete risk-analysis fields (known anomalies, CVE monitoring, failure impact) for each shipped SOUP item. | 🟡 | Open |
+| OPEN-06 | **SBOM tooling** — set up automated SBOM generation per build (CycloneDX or equivalent). | 🟡 | Open |
+| OPEN-07 | **Artifact repository** — provision `{{artifact_repo}}` as the single authorized, curated dependency source (CON-SUP-01). | 🟡 | Open |
+| OPEN-08 | **Deployment / infrastructure architecture** — document the target deployment topology, environments, and update mechanism. | 🟡 | Open |
+| OPEN-09 | **CI/CD pipeline** — wire build + test + SBOM + deploy into an automated pipeline. | 🟡 | Open |
+| OPEN-10 | **Post-Market Surveillance** — establish PMS data collection and trending triggers feeding ISO 14971 §10 loop. | 🟡 | Open |
+
+_Add new items as work progresses. Close items when resolved. Do not delete closed items — set status to Closed._
+
+## Priority key
+
+🔴 Blocking — must be resolved before regulatory submission
+🟡 Important — required for a complete QMS, but not immediately blocking
+🟢 Nice-to-have / enhancement

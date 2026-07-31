@@ -1,0 +1,123 @@
+code: samd
+name: "SaMD QMS"
+description: "Medical device software QMS — IEC 62304 / ISO 14971 / FDA 21 CFR 820 / EU MDR template and BMAD workflow integration"
+module_version: 1.0.0
+default_selected: false
+module_greeting: >
+  Your SaMD QMS has been scaffolded and wired into BMAD.
+  Every workflow (create-story, dev-story, code-review, etc.) now loads your
+  QMS constraints automatically — no prompting required.
+
+  Next step: review qms/regulatory/intended-use.md and qms/risk/risk-management-file.md,
+  then start your first epic with /bmad-create-epics-and-stories.
+
+  For questions on the regulatory content, refer to HOWTO.md at the root of the plugin.
+
+# ── Wizard questions asked by qms-init on first run ──────────────────────────
+
+device_name:
+  prompt: "Device name (the marketed product name, e.g. 'Anamnia')"
+  default: "MyDevice"
+  required: true
+
+manufacturer_name:
+  prompt: "Manufacturer / legal entity name"
+  default: "My Company Inc."
+  required: true
+
+intended_use_summary:
+  prompt: "One-sentence intended use (what the software does, for whom)"
+  default: "Software intended to [function] for [users] in [setting]."
+  required: true
+
+clinical_domain:
+  prompt: "Clinical domain (e.g. ophthalmology, cardiology, radiology, general)"
+  default: "general"
+
+fda_class:
+  prompt: "FDA device class"
+  single-select:
+    - value: "II-510k"
+      label: "Class II — 510(k)"
+    - value: "II-denovo"
+      label: "Class II — De Novo"
+    - value: "III-PMA"
+      label: "Class III — PMA"
+    - value: "I-exempt"
+      label: "Class I — Exempt"
+    - value: "none"
+      label: "Not targeting FDA / US market"
+  default: "II-510k"
+
+eu_mdr_class:
+  prompt: "EU MDR device class (Rule 11 applies to most SaMD)"
+  single-select:
+    - value: "I"
+      label: "Class I"
+    - value: "IIa"
+      label: "Class IIa (Notified Body)"
+    - value: "IIb"
+      label: "Class IIb (Notified Body)"
+    - value: "III"
+      label: "Class III (Notified Body)"
+    - value: "none"
+      label: "Not targeting EU / MDR market"
+  default: "IIa"
+
+iec62304_class:
+  prompt: "IEC 62304 software safety class (A=no injury, B=non-serious, C=serious/death)"
+  single-select:
+    - value: "A"
+      label: "Class A — no injury possible"
+    - value: "B"
+      label: "Class B — non-serious injury possible"
+    - value: "C"
+      label: "Class C — serious injury or death possible"
+  default: "B"
+
+phi_handling:
+  prompt: "Does the software process Protected Health Information (PHI / personal data)?"
+  confirm: true
+  default: true
+
+clinician_confirmed:
+  prompt: "Is all clinical output reviewed and confirmed by a qualified clinician before use?"
+  confirm: true
+  default: true
+
+jurisdiction:
+  prompt: "Target market jurisdiction(s)"
+  multi-select:
+    - value: "US"
+      label: "United States (FDA)"
+    - value: "EU"
+      label: "European Union (EU MDR)"
+    - value: "CA"
+      label: "Canada (Health Canada)"
+    - value: "UK"
+      label: "United Kingdom (MHRA)"
+  default: ["US", "EU"]
+
+source_control:
+  prompt: "Source control system (used in QMS references)"
+  default: "git"
+
+artifact_repo:
+  prompt: "Artifact/dependency repository (e.g. AWS CodeArtifact, Nexus, Artifactory)"
+  default: "internal-artifact-repo"
+
+post-install-notes: >
+  IMPORTANT — things to do after setup:
+  1. Open qms/regulatory/intended-use.md and fill in the device description details.
+  2. Open qms/risk/risk-management-file.md and add your hazard analysis.
+  3. Open qms/soup-register.md and list your third-party dependencies.
+  4. Commit the qms/ directory to source control.
+  5. Review HOWTO.md for a walkthrough of the regulatory framework.
+
+directories:
+  - "{project-root}/qms"
+  - "{project-root}/qms/regulatory"
+  - "{project-root}/qms/risk"
+  - "{project-root}/qms/decisions"
+  - "{project-root}/qms/architecture"
+  - "{project-root}/qms/requirements"

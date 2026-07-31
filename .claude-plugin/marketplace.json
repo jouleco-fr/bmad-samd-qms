@@ -1,0 +1,19 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "bmad-samd-qms",
+  "description": "SaMD QMS template and BMAD integration for medical device software regulated under FDA 21 CFR 820 / IEC 62304 / EU MDR. Scaffolds a complete, regulation-aligned qms/ directory in any project and wires QMS gates into every BMAD workflow automatically.",
+  "author": {
+    "name": "Christophe Montagne"
+  },
+  "category": "compliance",
+  "source": {
+    "source": "url",
+    "url": "https://github.com/YOUR_ORG/bmad-samd-qms.git",
+    "sha": "REPLACE_WITH_PINNED_COMMIT"
+  },
+  "skills": [
+    "./skills/qms-init",
+    "./skills/qms-update"
+  ],
+  "homepage": "https://github.com/YOUR_ORG/bmad-samd-qms"
+}

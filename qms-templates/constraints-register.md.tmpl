@@ -1,0 +1,22 @@
+# Constraints Register (Design Inputs) — {{device_name}}
+
+Hard constraints mandated for the **{{device_name}}** device. Each is a **design input** and must be
+traceable to architecture decisions, requirements, risk controls, and verifying tests.
+
+| ID | Constraint | Scope | Traces to |
+|---|---|---|---|
+| **CON-ARCH-01** | Components are independent, loosely-coupled and integrated via **explicit versioned contracts**. | Architecture | `architecture/component-map.md` |
+| **CON-ARCH-02** | All business logic executes **server-side**; thin client. | Architecture | `decisions/ADR-0001` |
+| **CON-SEC-01** | Access control is **top-priority and pervasive**. | Security | `decisions/ADR-0001` |
+| **CON-TRACE-01** | **Traceability is a first-class, standalone requirement set.** | Traceability | `requirements/traceability.md` |
+| **CON-DATA-01** | A view/API response transmits **exactly the data needed — no more**. | Data / Security | — |
+| **CON-DATA-02** | PHI **must not linger in client-side state**. Hard rule: no PHI browser-side; active eviction; sessions as small as possible. | Data / Security | `RISK-05`, `RISK-06` |
+| **CON-CFG-01** | Clinical/domain reference data shall **never be hard-coded in source**. Units, lexicons, reference ranges, plausibility bounds, and format definitions are externalized as versioned, validated configuration loaded at runtime. | Configurability / Safety | `decisions/ADR-0003`, `RISK-08` |
+| **CON-CFG-02** | **No configuration on production.** All config is validated and versioned, and promoted to production only via controlled, integrity-verified transfer. | Config mgmt | `requirements/configuration.md` |
+| **CON-CFG-03** | The production system must be in a **quiescent (safe) state** when a configuration is applied; activation is atomic and non-disruptive. | Config mgmt / Safety | `requirements/configuration.md`, `RISK-07` |
+| **CON-VER-01** | Source control via **{{source_control}}**. | DevOps / Config mgmt | — |
+| **CON-TEST-01** | **Extensive, well-documented, automated tests are mandatory**; each test ties to a requirement ID via traceability annotation. | V&V | `definition-of-done.md` |
+| **CON-SUP-01** | **No SOUP / third-party library may be used without prior authorization.** All builds resolve dependencies from `{{artifact_repo}}`; every authorized item is recorded in `soup-register.md`. | Supply chain | `soup-register.md` |
+| **CON-INFRA-01** | **Databases run on dedicated servers — NEVER in an application container.** Target DBMS: [FILL IN]. Credentials supplied via the secrets port — never in source, image, or logs. | Infrastructure | `decisions/ADR-000N` |
+
+_Add project-specific constraints below. Follow the `CON-<AREA>-NN` convention._

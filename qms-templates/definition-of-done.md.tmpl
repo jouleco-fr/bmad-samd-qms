@@ -1,0 +1,68 @@
+# Definition of Done (DoD) — {{device_name}}
+
+The **universal completion bar** every story / backlog item must clear **in addition to its own
+acceptance criteria**. Enforces IEC 62304 / ISO 13485 / QMS discipline at each increment.
+A story is **Done** only when **all applicable items** are satisfied and evidenced.
+
+> Three V&V layers: **measurable benefit** → test *objective* · **acceptance criteria** → test *cases* ·
+> **DoD** → universal *exit gate*
+
+_"Applicable" = an item that touches the area. Items that don't apply are marked N/A with a one-line reason._
+
+## 1. Functional & acceptance
+
+- [ ] All of the story's **acceptance criteria pass** (automated where possible).
+- [ ] The story's **measurable benefit is demonstrably met** (the metric in the "so that" is evidenced).
+- [ ] Behavior matches the PRD/architecture; no scope drift.
+
+## 2. Code quality
+
+- [ ] Built to **architecture patterns** — ports & adapters, results-not-exceptions, consistent naming.
+- [ ] **No PHI in logs / exceptions**; structured logging with correlation / provenance ID.
+- [ ] **Peer code review approved**; no unresolved review comments.
+
+## 3. Tests & verification
+
+- [ ] **Unit + integration tests green**; full suite passes (no regressions).
+- [ ] Each new/changed test carries **`@Traces("FR..","RISK..")`** (or equivalent traceability annotation)
+  linking it to the requirement / risk it verifies.
+- [ ] A **fake / stub exists for every port** introduced; **Testcontainers** (or equivalent) for real-DB paths.
+- [ ] **Test coverage of new/changed code meets the threshold:**
+  - **General code:** ≥ 80% line and ≥ 70% branch (new/changed).
+  - **Safety-relevant code** (anything traced to a `RISK-*` or a safety predicate):
+    ≥ 95% branch AND 100% of identified safety scenarios covered by an explicit traced test.
+  - Uncovered safety-relevant branches require a documented justification (coverage-gap analysis).
+
+## 4. Safety, risk & traceability (regulated — IEC 62304 Class {{iec62304_class}})
+
+- [ ] **Requirement traceability updated** (FR → design → test) via traceability annotation or matrix.
+- [ ] **Risk controls verified**; if the work surfaced a new hazard, `risk-management-file.md` /
+  `risk-register.md` + `open-items.md` are updated.
+- [ ] **Chain-of-custody / audit trail** emitted where the story transforms or accesses clinical data.
+
+## 5. Security & supply chain
+
+- [ ] **No unauthorized SOUP** — any new dependency authorized and added to `soup-register.md`.
+- [ ] **SBOM regenerated** and reviewed; no unresolved high/critical vulnerability.
+- [ ] Secrets via the secrets provider port — **no secrets in code or logs**.
+- [ ] For parser/connector-touching stories: basic untrusted-input safety (size/time limits, validation).
+
+## 6. Data & privacy
+
+- [ ] PHI **encrypted in transit and at rest**; data-minimization respected.
+- [ ] **No real PHI in tests** — de-identified/synthetic fixtures only.
+
+_(Applicable only when `phi_handling = {{phi_handling}}`.)_
+
+## 7. Build, CI & documentation (DHF)
+
+- [ ] **CI green**; build reproducible; dependencies resolve only from `{{artifact_repo}}`.
+- [ ] **ADR added/updated** if a design decision changed; affected QMS docs updated.
+- [ ] `open-items.md` updated (closed/added as needed).
+- [ ] Commit references the **story ID + FR/RISK**; pushed to `{{source_control}}`.
+
+## Roles & sign-off [QMS]
+
+Developer self-verifies the DoD; reviewer confirms.
+Formal roles, records, and the review SOP are to be established in the ISO 13485 QMS.
+Until then, DoD verification is recorded in the PR/commit.

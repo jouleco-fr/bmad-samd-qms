@@ -1,0 +1,106 @@
+# IEC 62304 Software Documentation File — {{device_name}}
+
+Software lifecycle documentation per **IEC 62304:2006+A1:2015**, cross-mapped to the FDA guidance
+*Content of Premarket Submissions for Device Software Functions* (2023).
+⚠️ Draft for RA review; not regulatory advice.
+
+## 0. Scope
+
+Covers: [FILL IN: list the software components in scope, e.g. ingestion module, presentation layer, etc.]
+
+## 1. Software safety classification (Clause 4.3) — decision
+
+- **IEC 62304 class: {{iec62304_class}} ({{iec62304_class_label}})**
+- **Rationale:** [FILL IN: explain why this class was chosen — describe the injury pathway,
+  what controls break the chain to serious injury, and how the clinician confirmation gate
+  (if applicable) limits harm. Must be confirmed by the ISO 14971 risk analysis (OPEN-02).]
+- **FDA documentation level:** [FILL IN: Basic / Enhanced — aligns with 62304 class and
+  probability of serious injury]
+
+## 2. Software development plan (Clause 5.1)
+
+- **Lifecycle:** [FILL IN: e.g. iterative/incremental, waterfall, BMAD-structured]
+- **Activities & deliverables:** requirements → architecture → detailed design → implementation →
+  unit/integration/system verification → release
+- **Standards:** [FILL IN: coding rules, naming conventions, architecture patterns]
+- **Traceability:** [FILL IN: how tests are linked to requirements — e.g. @Traces annotation,
+  traceability matrix]
+- **Tools/build:** [FILL IN: language/runtime, build tool, dependency repo (CON-SUP-01)]
+- **Source control:** {{source_control}}
+
+## 3. Software requirements analysis (Clause 5.2)
+
+Captured in: [FILL IN: PRD, requirements register, constraints-register.md]
+Includes: functional, interface, data, safety, and regulatory requirements.
+Verification: each requirement has (or will have) a traced test.
+
+## 4. Software architectural design (Clause 5.3)
+
+Source: [FILL IN: architecture.md, component map, SDD]
+Pattern: [FILL IN: e.g. ports & adapters, microservices, monolith]
+SOUP items identified: see `../soup-register.md`
+Interfaces documented as: [FILL IN: OpenAPI, FHIR profiles, JSON Schema, etc.]
+
+## 5. Software detailed design (Clause 5.4)
+
+_Required for IEC 62304 Class B and C._
+
+Source: [FILL IN: SDD documents in qms/architecture/]
+[PLANNED] components' detailed design is authored as they are built.
+
+## 6. Unit implementation & verification (Clause 5.5)
+
+Coding per architecture patterns; unit tests per [FILL IN: test framework];
+a fake/stub for every port; traceability annotations.
+
+## 7. Integration & integration testing (Clause 5.6)
+
+[FILL IN: approach to integration testing, e.g. Testcontainers for DB integration,
+contract tests for inter-component interfaces]
+
+## 8. Software system testing (Clause 5.7)
+
+System/acceptance verification against requirements and success metrics:
+[FILL IN: define M1, M2, M3 metrics, acceptance criteria, and any data-gated items]
+
+## 9. SOUP management (Clauses 5.3.3–5.3.4, 8.1.2)
+
+Source: `../soup-register.md` + CycloneDX SBOM per build.
+No SOUP added without authorization (CON-SUP-01).
+Vulnerability monitoring feeds problem resolution and the cybersecurity file.
+
+## 10. Software release (Clause 5.8)
+
+Release = versioned build + SBOM + known-anomalies list + verification summary.
+Release procedure [QMS] to be formalized (OPEN-04).
+
+## 11. Software configuration management (Clause 8)
+
+- Source control: {{source_control}}
+- Versioning & change control [QMS]: to be formalized (OPEN-04)
+- Dependency repo: {{artifact_repo}} (CON-SUP-01)
+
+## 12. Software problem resolution (Clause 9) — [QMS gap]
+
+Defect/anomaly capture, analysis, and CAPA — requires the ISO 13485 QMS (OPEN-04).
+
+## 13. Software maintenance (Clause 6) — [QMS gap]
+
+Maintenance plan + change-control; post-market updates. To author (OPEN-04).
+
+## 14. Software risk management (Clause 7)
+
+Interfaces with ISO 14971 — see `../risk/risk-management-file.md`.
+Risk controls designed: [FILL IN: list key risk controls, e.g. confirmation gate, hold/quarantine,
+audit trail, source-region provenance]
+
+## 15. Status summary
+
+**Have:** [FILL IN: what's done]
+**To author / [QMS]:** formal SOP, change-control, release procedures, problem resolution (OPEN-04)
+**[RISK]:** grow the ISO 14971 file (OPEN-02)
+
+## Cross-refs
+
+`../soup-register.md`, `../architecture/`, `../regulatory/intended-use.md`,
+`../risk/risk-management-file.md`

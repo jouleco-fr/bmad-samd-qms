@@ -1,0 +1,47 @@
+# SOUP / Third-Party Dependency Register — {{device_name}}
+
+Register of all third-party software used by the device — **Software of Unknown Provenance (SOUP)**
+per IEC 62304 — with versions, for configuration management and risk analysis.
+
+- **Traces to:** CON-TEST-01, CON-SUP-01
+- **Scope key:** **shipped** = runs in the device · **build** = build toolchain only ·
+  **test** = test-only · **runtime-system** = external system dependency
+
+## [FILL IN: Component / Module Name]
+
+### Shipped (compile/runtime — in the device)
+
+| Library | Version | Purpose | License | Direct? |
+|---|---|---|---|---|
+| [library-name] | [version] | [purpose] | [SPDX identifier] | direct / transitive |
+
+### Test-only (not shipped)
+
+| Library | Version | License |
+|---|---|---|
+| [library-name] | [version] | [SPDX identifier] |
+
+### Build toolchain (not shipped)
+
+| Tool | Version |
+|---|---|
+| [tool-name] | [version] |
+
+## Risk-analysis fields (to complete per shipped item — IEC 62304 §8.1.2)
+
+For each **shipped** SOUP item, the formal analysis must record:
+- Manufacturer / source
+- Anticipated use in the device
+- Functional / performance requirements relied upon
+- **Known anomalies / open defects**
+- Security advisory (CVE) monitoring source
+- Impact and mitigation if it malfunctions
+
+## Maintenance
+
+- **Authorization gate (CON-SUP-01):** no library may be used without prior authorization.
+  Adding a SOUP item: **authorize → import to {{artifact_repo}} → record here**.
+- Regenerate the resolved dependency list after any dependency change.
+- **SBOM:** use a SBOM plugin (e.g. CycloneDX) to emit a machine-readable SBOM on every build.
+  This register is the human-readable complement; the SBOM satisfies FDA premarket cybersecurity
+  and EU MDR traceability requirements.

@@ -1,0 +1,4 @@
+display-name,menu-code,description,action,args,phase,after,before,required,output-location,outputs
+QMS Init / Setup,QI,Scaffold a regulation-aligned qms/ directory and wire QMS gates into every BMAD workflow,setup,[setup|configure],anytime,,,true,{project-root}/qms,Populated qms/ directory and _bmad/custom/config.toml patch
+QMS Update,QU,Update QMS templates to a newer version of the plugin while preserving project customisations,update,[update],anytime,samd:setup,,false,{project-root}/qms,Updated template files in qms/
+QMS Validate,QV,Check that required QMS files exist and contain required sections,validate,[validate],anytime,samd:setup,,false,{project-root}/qms,Validation report

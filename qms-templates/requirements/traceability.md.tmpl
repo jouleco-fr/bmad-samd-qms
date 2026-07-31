@@ -1,0 +1,35 @@
+# Traceability Requirements — {{device_name}}
+
+Requirement set `REQ-TRACE-*`. Derived from CON-TRACE-01 and IEC 62304 §5.7 (system testing).
+
+## Requirements
+
+| ID | Requirement | Verification method |
+|---|---|---|
+| REQ-TRACE-01 | Every functional requirement (FR) shall be traceable to at least one acceptance criterion. | Review: PRD / story ACs |
+| REQ-TRACE-02 | Every acceptance criterion shall be traceable to at least one automated test. | Tool: traceability annotation / matrix |
+| REQ-TRACE-03 | Every automated test shall declare the FR(s) and RISK item(s) it verifies via a traceability annotation. | Tool: annotation; CI: coverage gate |
+| REQ-TRACE-04 | Every risk control (RISK-*) shall be verified by at least one explicit traced test. | Review: risk register + test suite |
+| REQ-TRACE-05 | No test may silently verify a safety predicate — the safety scenario must be named in the test. | Code review |
+| REQ-TRACE-06 | The traceability matrix shall be regenerated and reviewed on each release. | CI: traceability report |
+| REQ-TRACE-07 | Traceability must cover new/changed code introduced by each story before the story is closed. | DoD check |
+| REQ-TRACE-08 | Machine-extractable traceability annotation shall be used (e.g. `@Traces("FR-XX","RISK-YY")`). | Tool |
+
+## Traceability annotation convention
+
+Each test class or method carrying a traceability annotation shall use the following form:
+
+```
+@Traces({"FR-XX", "RISK-YY"})   // or equivalent in your test framework
+```
+
+Where:
+- `FR-XX` is the functional requirement ID from the PRD
+- `RISK-YY` is the risk register ID from `risk/risk-register.md`
+
+Multiple IDs may be listed if a single test verifies multiple requirements/risks.
+
+## Traceability matrix
+
+[FILL IN: Add a matrix or link to the auto-generated traceability report here after the first
+sprint. Format: FR-ID → Test class(es) → RISK-ID(s) → Status]
