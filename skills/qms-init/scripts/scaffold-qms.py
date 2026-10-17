@@ -115,7 +115,9 @@ def scaffold(project_root: Path, templates_dir: Path, subs: dict, skip_customize
 
         if out_path.exists():
             existing = out_path.read_text(encoding="utf-8")
-            if skip_customized and not has_placeholders(existing):
+            # A file with no {{ tokens left has been customized: never overwrite it,
+            # with or without --skip-customized (setup promises existing files are safe).
+            if not has_placeholders(existing):
                 already_customized.append(str(out_rel))
                 continue
             # File exists but still has placeholders — overwrite with fresh substitution

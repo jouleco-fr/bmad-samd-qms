@@ -55,7 +55,8 @@ Run the scaffold script, passing all collected wizard values as JSON:
 python3 ./scripts/scaffold-qms.py \
   --project-root "{project-root}" \
   --templates-dir "./../../qms-templates" \
-  --answers {temp-file}
+  --answers {temp-file} \
+  --skip-customized
 ```
 
 The script instantiates every `*.tmpl` file in `qms-templates/` by substituting
@@ -81,7 +82,23 @@ persistent_facts = [
   "file:{project-root}/qms/regulatory/intended-use.md",
 ]
 
+# bmad-prd replaces the deprecated bmad-create-prd
+[skills.bmad-prd.workflow]
+persistent_facts = [
+  "file:{project-root}/qms/definition-of-done.md",
+  "file:{project-root}/qms/constraints-register.md",
+  "file:{project-root}/qms/regulatory/intended-use.md",
+]
+
 [skills.bmad-create-architecture.workflow]
+persistent_facts = [
+  "file:{project-root}/qms/definition-of-done.md",
+  "file:{project-root}/qms/constraints-register.md",
+  "file:{project-root}/qms/requirements/traceability.md",
+]
+
+# bmad-architecture replaces the deprecated bmad-create-architecture
+[skills.bmad-architecture.workflow]
 persistent_facts = [
   "file:{project-root}/qms/definition-of-done.md",
   "file:{project-root}/qms/constraints-register.md",
@@ -123,6 +140,22 @@ persistent_facts = [
 ]
 # [/samd-qms-wiring]
 ```
+
+**Then write the per-skill override files — this is what BMAD actually reads.** BMAD's
+`_bmad/scripts/resolve_customization.py` reads per-workflow settings only from
+`{project-root}/_bmad/custom/<skill>.toml` (`[workflow]` table); `[skills.*]` sections in
+`_bmad/custom/config.toml` are never read for workflows. For each `[skills.<skill>.workflow]`
+entry of the block above, write (or replace) `{project-root}/_bmad/custom/<skill>.toml`:
+
+```toml
+# Managed by the bmad-samd-qms plugin (QMS wiring).
+[workflow]
+persistent_facts = [ ...the same entries... ]
+```
+
+Verify with `uv run {project-root}/_bmad/scripts/resolve_customization.py --skill
+{project-root}/.claude/skills/<skill> --key workflow` — the QMS files must appear in
+`persistent_facts`. Also pass `--skip-customized` to `scaffold-qms.py` on any re-run (step 4).
 
 ## Step 6 — Create output directories
 
