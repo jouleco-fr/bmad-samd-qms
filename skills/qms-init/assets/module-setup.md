@@ -7,12 +7,12 @@ This file is loaded when:
 ## Overview
 
 Registers the `samd` module and scaffolds the `qms/` directory from templates.
-Writes three files and patches a fourth:
+Writes these files:
 
 - `{project-root}/_bmad/config.yaml` — module registration + wizard answers
 - `{project-root}/_bmad/config.user.yaml` — personal settings (user_name, language)
 - `{project-root}/_bmad/module-help.csv` — QMS capability entries for bmad-help
-- `{project-root}/_bmad/custom/config.toml` — **BMAD workflow wiring** (persistent_facts for every skill)
+- `{project-root}/_bmad/custom/<skill>.toml` — **BMAD workflow wiring**, one file per QMS-relevant workflow (persistent_facts)
 
 ## Step 1 — Check existing config
 
@@ -65,97 +65,28 @@ Existing files are NOT overwritten (safe to re-run after manual edits).
 
 ## Step 5 — Wire BMAD workflows
 
-Patch `{project-root}/_bmad/custom/config.toml` to inject QMS files into `persistent_facts`
-for the key BMAD skills. Read the file first; if it already has a `# [samd-qms-wiring]` block,
-replace it. Otherwise append it.
+Run the wiring script. It writes one `{project-root}/_bmad/custom/<skill>.toml` per entry of
+`./assets/wiring.toml`, with the QMS documents as `persistent_facts` — the file BMAD's
+`_bmad/scripts/resolve_customization.py` actually reads for a workflow (`[skills.*]` sections
+in `_bmad/custom/config.toml` are never read for workflows: that was the 2026 wiring defect).
 
-The block to write:
-
-```toml
-# [samd-qms-wiring] — managed by bmad-samd-qms plugin. Do not edit this block manually.
-# Remove the block and re-run /qms-init configure to regenerate.
-
-[skills.bmad-create-prd.workflow]
-persistent_facts = [
-  "file:{project-root}/qms/definition-of-done.md",
-  "file:{project-root}/qms/constraints-register.md",
-  "file:{project-root}/qms/regulatory/intended-use.md",
-]
-
-# bmad-prd replaces the deprecated bmad-create-prd
-[skills.bmad-prd.workflow]
-persistent_facts = [
-  "file:{project-root}/qms/definition-of-done.md",
-  "file:{project-root}/qms/constraints-register.md",
-  "file:{project-root}/qms/regulatory/intended-use.md",
-]
-
-[skills.bmad-create-architecture.workflow]
-persistent_facts = [
-  "file:{project-root}/qms/definition-of-done.md",
-  "file:{project-root}/qms/constraints-register.md",
-  "file:{project-root}/qms/requirements/traceability.md",
-]
-
-# bmad-architecture replaces the deprecated bmad-create-architecture
-[skills.bmad-architecture.workflow]
-persistent_facts = [
-  "file:{project-root}/qms/definition-of-done.md",
-  "file:{project-root}/qms/constraints-register.md",
-  "file:{project-root}/qms/requirements/traceability.md",
-]
-
-[skills.bmad-create-epics-and-stories.workflow]
-persistent_facts = [
-  "file:{project-root}/qms/definition-of-done.md",
-  "file:{project-root}/qms/constraints-register.md",
-]
-
-[skills.bmad-create-story.workflow]
-persistent_facts = [
-  "file:{project-root}/qms/definition-of-done.md",
-  "file:{project-root}/qms/constraints-register.md",
-  "file:{project-root}/qms/requirements/traceability.md",
-  "file:{project-root}/qms/risk/risk-register.md",
-]
-
-[skills.bmad-dev-story.workflow]
-persistent_facts = [
-  "file:{project-root}/qms/definition-of-done.md",
-  "file:{project-root}/qms/constraints-register.md",
-  "file:{project-root}/qms/soup-register.md",
-  "file:{project-root}/qms/risk/risk-register.md",
-]
-
-[skills.bmad-code-review.workflow]
-persistent_facts = [
-  "file:{project-root}/qms/definition-of-done.md",
-  "file:{project-root}/qms/requirements/traceability.md",
-]
-
-[skills.bmad-retrospective.workflow]
-persistent_facts = [
-  "file:{project-root}/qms/definition-of-done.md",
-  "file:{project-root}/qms/open-items.md",
-]
-# [/samd-qms-wiring]
+```bash
+python3 ./scripts/wire-workflows.py \
+  --project-root "{project-root}" \
+  --wiring ./assets/wiring.toml
 ```
 
-**Then write the per-skill override files — this is what BMAD actually reads.** BMAD's
-`_bmad/scripts/resolve_customization.py` reads per-workflow settings only from
-`{project-root}/_bmad/custom/<skill>.toml` (`[workflow]` table); `[skills.*]` sections in
-`_bmad/custom/config.toml` are never read for workflows. For each `[skills.<skill>.workflow]`
-entry of the block above, write (or replace) `{project-root}/_bmad/custom/<skill>.toml`:
+The script never overwrites a `<skill>.toml` it did not write; it reports such a file as
+`refused` and exits 1. Show the refused files to the user and ask how to merge them.
 
-```toml
-# Managed by the bmad-samd-qms plugin (QMS wiring).
-[workflow]
-persistent_facts = [ ...the same entries... ]
+Then verify each wired skill with BMAD's own resolver — the QMS files must appear:
+
+```bash
+uv run {project-root}/_bmad/scripts/resolve_customization.py \
+  --skill {project-root}/.claude/skills/<skill> --key workflow.persistent_facts
 ```
 
-Verify with `uv run {project-root}/_bmad/scripts/resolve_customization.py --skill
-{project-root}/.claude/skills/<skill> --key workflow` — the QMS files must appear in
-`persistent_facts`. Also pass `--skip-customized` to `scaffold-qms.py` on any re-run (step 4).
+The same checks run automatically in `tests/test_plugin.py`.
 
 ## Step 6 — Create output directories
 

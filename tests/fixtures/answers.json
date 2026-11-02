@@ -1,0 +1,20 @@
+{
+  "module": {
+    "device_name": "TestDevice",
+    "manufacturer_name": "Test Manufacturer",
+    "intended_use_summary": "A test device used only by the plugin's own tests.",
+    "clinical_domain": "general",
+    "fda_class": "II-510k",
+    "eu_mdr_class": "IIa",
+    "iec62304_class": "C",
+    "phi_handling": true,
+    "clinician_confirmed": false,
+    "jurisdiction": ["US", "EU"],
+    "source_control": "git",
+    "artifact_repo": "internal-artifact-repo"
+  },
+  "core": {
+    "project_name": "TestProject",
+    "user_name": "Tester"
+  }
+}

@@ -1,0 +1,31 @@
+# Which QMS documents each BMAD workflow loads as persistent facts.
+# Read by scripts/wire-workflows.py; one [skills.<skill>] table per workflow.
+
+[skills.bmad-create-prd]
+facts = ["qms/definition-of-done.md", "qms/constraints-register.md", "qms/regulatory/intended-use.md"]
+
+# bmad-prd replaces the deprecated bmad-create-prd
+[skills.bmad-prd]
+facts = ["qms/definition-of-done.md", "qms/constraints-register.md", "qms/regulatory/intended-use.md"]
+
+[skills.bmad-create-architecture]
+facts = ["qms/definition-of-done.md", "qms/constraints-register.md", "qms/requirements/traceability.md"]
+
+# bmad-architecture replaces the deprecated bmad-create-architecture
+[skills.bmad-architecture]
+facts = ["qms/definition-of-done.md", "qms/constraints-register.md", "qms/requirements/traceability.md"]
+
+[skills.bmad-create-epics-and-stories]
+facts = ["qms/definition-of-done.md", "qms/constraints-register.md"]
+
+[skills.bmad-create-story]
+facts = ["qms/definition-of-done.md", "qms/constraints-register.md", "qms/requirements/traceability.md", "qms/risk/risk-register.md"]
+
+[skills.bmad-dev-story]
+facts = ["qms/definition-of-done.md", "qms/constraints-register.md", "qms/soup-register.md", "qms/risk/risk-register.md"]
+
+[skills.bmad-code-review]
+facts = ["qms/definition-of-done.md", "qms/requirements/traceability.md"]
+
+[skills.bmad-retrospective]
+facts = ["qms/definition-of-done.md", "qms/open-items.md"]

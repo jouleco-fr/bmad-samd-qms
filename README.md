@@ -15,11 +15,11 @@ Covers: **FDA 21 CFR 820 · IEC 62304 · ISO 14971 · EU MDR 2017/745 · FDA §5
 ## Install
 
 ```bash
-# From GitHub (once this repo is pushed):
+# From the published repository (address to come):
 claude plugin install https://github.com/YOUR_ORG/bmad-samd-qms.git
 
-# Or from this local directory:
-claude plugin install /home/christophe/ClaudeAI/bmad-samd-qms
+# Or from a local copy of this repository:
+./install.sh
 ```
 
 ## Use
@@ -66,3 +66,14 @@ See [HOWTO.md](HOWTO.md) for the full regulatory context, filling guide, and mai
 
 MIT — provided as a starting scaffold. Not regulatory advice. Have a regulatory affairs professional
 review all documents before submission.
+
+## Tests
+
+End-to-end tests run the plugin on a throw-away project and check, with BMAD's own resolver,
+that every wired workflow loads the QMS documents. See [tests/README.md](tests/README.md).
+
+## Licence
+
+MIT, see [LICENSE](LICENSE). Published by Jouleco SARL (jouleco.fr). The templates help
+structure a quality system; they do not make software compliant, and they are no substitute
+for qualified regulatory review.
