@@ -1,19 +1,23 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "bmad-samd-qms",
-  "description": "SaMD QMS template and BMAD integration for medical device software regulated under FDA 21 CFR 820 / IEC 62304 / EU MDR. Scaffolds a complete, regulation-aligned qms/ directory in any project and wires QMS gates into every BMAD workflow automatically.",
-  "author": {
-    "name": "Christophe Montagne"
+  "name": "jouleco",
+  "owner": {
+    "name": "Jouleco",
+    "email": "contact@jouleco.fr",
+    "url": "https://jouleco.fr"
   },
-  "category": "compliance",
-  "source": {
-    "source": "url",
-    "url": "https://github.com/jouleco-fr/bmad-samd-qms.git",
-    "sha": "0091262d75595ef0fc31f9605906437dcac6614a"
-  },
-  "skills": [
-    "./skills/qms-init",
-    "./skills/qms-update"
-  ],
-  "homepage": "https://github.com/jouleco-fr/bmad-samd-qms"
+  "plugins": [
+    {
+      "name": "bmad-samd-qms",
+      "source": "./",
+      "description": "Scaffolds a regulation-aligned SaMD quality management system (FDA 21 CFR 820, IEC 62304, ISO 14971, EU MDR) and wires it into every BMAD workflow, with end-to-end tests.",
+      "version": "1.0.1",
+      "author": { "name": "Christophe Montagne", "email": "contact@jouleco.fr" },
+      "homepage": "https://github.com/jouleco-fr/bmad-samd-qms",
+      "repository": "https://github.com/jouleco-fr/bmad-samd-qms",
+      "license": "MIT",
+      "category": "compliance",
+      "keywords": ["bmad", "qms", "iec-62304", "iso-14971", "samd", "medical-device-software"]
+    }
+  ]
 }

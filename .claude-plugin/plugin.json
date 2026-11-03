@@ -1,0 +1,10 @@
+{
+  "name": "bmad-samd-qms",
+  "version": "1.0.1",
+  "description": "Scaffolds a regulation-aligned SaMD quality management system and wires it into every BMAD workflow, with end-to-end tests.",
+  "author": { "name": "Christophe Montagne", "email": "contact@jouleco.fr", "url": "https://jouleco.fr" },
+  "homepage": "https://github.com/jouleco-fr/bmad-samd-qms",
+  "repository": "https://github.com/jouleco-fr/bmad-samd-qms",
+  "license": "MIT",
+  "keywords": ["bmad", "qms", "iec-62304", "iso-14971", "samd", "medical-device-software"]
+}

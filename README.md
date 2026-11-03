@@ -15,8 +15,9 @@ Covers: **FDA 21 CFR 820 · IEC 62304 · ISO 14971 · EU MDR 2017/745 · FDA §5
 ## Install
 
 ```bash
-# From the published repository (github.com/jouleco-fr):
-claude plugin install https://github.com/jouleco-fr/bmad-samd-qms.git
+# From the published repository: add it as a marketplace, then install
+claude plugin marketplace add jouleco-fr/bmad-samd-qms
+claude plugin install bmad-samd-qms@jouleco
 
 # Or from a local copy of this repository:
 ./install.sh

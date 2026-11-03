@@ -70,8 +70,9 @@ The class must be confirmed by the ISO 14971 risk analysis — they are interdep
 ### Install once per workstation
 
 ```bash
-# From a GitHub URL (once pushed):
-claude plugin install https://github.com/jouleco-fr/bmad-samd-qms.git
+# From the published repository: add it as a marketplace, then install
+claude plugin marketplace add jouleco-fr/bmad-samd-qms
+claude plugin install bmad-samd-qms@jouleco
 
 # Or from a local directory:
 claude plugin install /path/to/bmad-samd-qms
