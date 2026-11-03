@@ -9,7 +9,7 @@
   "source": {
     "source": "url",
     "url": "https://github.com/jouleco-fr/bmad-samd-qms.git",
-    "sha": "REPLACE_WITH_PINNED_COMMIT"
+    "sha": "0091262d75595ef0fc31f9605906437dcac6614a"
   },
   "skills": [
     "./skills/qms-init",
