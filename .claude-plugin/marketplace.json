@@ -8,12 +8,12 @@
   "category": "compliance",
   "source": {
     "source": "url",
-    "url": "https://github.com/YOUR_ORG/bmad-samd-qms.git",
+    "url": "https://github.com/jouleco-fr/bmad-samd-qms.git",
     "sha": "REPLACE_WITH_PINNED_COMMIT"
   },
   "skills": [
     "./skills/qms-init",
     "./skills/qms-update"
   ],
-  "homepage": "https://github.com/YOUR_ORG/bmad-samd-qms"
+  "homepage": "https://github.com/jouleco-fr/bmad-samd-qms"
 }

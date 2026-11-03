@@ -71,7 +71,7 @@ The class must be confirmed by the ISO 14971 risk analysis — they are interdep
 
 ```bash
 # From a GitHub URL (once pushed):
-claude plugin install https://github.com/YOUR_ORG/bmad-samd-qms.git
+claude plugin install https://github.com/jouleco-fr/bmad-samd-qms.git
 
 # Or from a local directory:
 claude plugin install /path/to/bmad-samd-qms
