@@ -75,7 +75,8 @@ claude plugin marketplace add jouleco-fr/bmad-samd-qms
 claude plugin install bmad-samd-qms@jouleco
 
 # Or from a local directory:
-claude plugin install /path/to/bmad-samd-qms
+claude plugin marketplace add /path/to/bmad-samd-qms
+claude plugin install bmad-samd-qms@jouleco
 ```
 
 This registers the `qms-init` and `qms-update` skills globally on your workstation.
